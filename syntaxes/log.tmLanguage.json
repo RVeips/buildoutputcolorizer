@@ -3,10 +3,21 @@
 	"name": "Log",
 	"scopeName": "code.log",
 	"patterns": [
-		{ "include": "#gcc" },
-		{ "include": "#clang" },
-		{ "include": "#msvc" },
-		{ "include": "#cmake" }
+		{
+			"include": "#gcc"
+		},
+		{
+			"include": "#clang"
+		},
+		{
+			"include": "#msvc"
+		},
+		{
+			"include": "#cmake"
+		},
+		{
+			"include": "#iar"
+		}
 	],
 	"repository": {
 		"gcc": {
@@ -34,15 +45,22 @@
 				{
 					"begin": "In function ",
 					"end": ":",
-					"captures": { "0": { "name": "markup.other.log.info" } },
+					"captures": {
+						"0": {
+							"name": "markup.other.log.info"
+						}
+					},
 					"contentName": "meta.embedded.block.cpp",
-					"patterns": [ {"include": "source.cpp"} ]
+					"patterns": [
+						{
+							"include": "source.cpp"
+						}
+					]
 				}
 			]
 		},
 		"clang": {
-			"patterns": [
-			]
+			"patterns": []
 		},
 		"msvc": {
 			"patterns": [
@@ -79,9 +97,38 @@
 					"name": "markup.other.log.error"
 				}
 			]
+		},
+		"iar": {
+			"patterns": [
+				{
+					"match": "\".+:\\d+\"",
+					"name": "markup.other.log.debug"
+				},
+				{
+					"match": "(Fatal )?[Ee]rror\\[.+\\]:.+",
+					"name": "markup.other.log.error"
+				},
+				{
+					"match": "~\\s+.+",
+					"name": "markup.other.log.warn_weak"
+				},
+				{
+					"match": "!\\s+.+",
+					"name": "markup.other.log.error_weak"
+				},
+				{
+					"match": "Error\\[.+\\]:.+",
+					"name": "markup.other.log.error"
+				},
+				{
+					"match": "Warning\\[.+\\]:.+",
+					"name": "markup.other.log.warn"
+				},
+				{
+					"match": "\\s\\s[\\s]*\\^$",
+					"name": "markup.other.log.info"
+				}
+			]
 		}
 	}
 }
-
-
-
